@@ -1,6 +1,6 @@
-# Wapenamanda Voting Tracking System (WVTS) — Step-by-Step Technical Implementation Guide
+# Wapenmanda Voting Tracking System (WVTS) — Step-by-Step Technical Implementation Guide
 
-This repository now contains the implementation guide for building the **Wapenamanda Voting Tracking System (WVTS)**.
+This repository now contains the implementation guide for building the **Wapenmanda Voting Tracking System (WVTS)**.
 
 ## Access Model (Applies to All User Types)
 - All users (general users, candidates, and national census team members) can access the platform through:
@@ -109,7 +109,7 @@ This repository now contains the implementation guide for building the **Wapenam
     - Run migration against PostgreSQL and verify table schemas.
 
 23. **Seed Reference Data**
-    - 1 district (Wapenamanda), 2 LLGs (Tsak, Wapenamanda), 130+ wards with population `0`.
+    - 1 district (Wapenmanda), 2 LLGs (Tsak, Wapenmanda), 130+ wards with population `0`.
 
 24. **Create Census Team Administrator Account**
     - Seed a census-team user with hashed password and 3FA enabled.
@@ -202,7 +202,7 @@ This repository now contains the implementation guide for building the **Wapenam
     - Verify assertion; issue full JWT; update 3FA login timestamp.
 
 50. **Implement Population Update Endpoint**
-    - Require census role + valid recent 3FA (within one hour), audit log, update population, trigger recalculation/notifications.
+    - Require census role + valid recent 3FA (within configured window, e.g., one hour via `CENSUS_3FA_VALIDITY_WINDOW_MINUTES`), audit log, update population, trigger recalculation/notifications.
 
 51. **Implement Recalculation + Notification Trigger**
     - Recompute impacted candidate metrics and create census update notifications.
