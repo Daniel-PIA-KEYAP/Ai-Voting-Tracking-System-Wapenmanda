@@ -8,6 +8,7 @@ This repository now contains the implementation guide for building the **Wapenma
   - direct **URL links**, or
   - both methods.
 - Authentication supports password login, with role-specific flows (including multi-factor for census team).
+- Census team authentication uses three-factor authentication (3FA): password + SMS OTP + biometric/WebAuthn assertion.
 
 ---
 
@@ -57,8 +58,9 @@ This repository now contains the implementation guide for building the **Wapenma
      - `DATABASE_URL`
      - `JWT_SECRET`
      - `SMS_API_KEY`
-     - `WEBAUTHN_RP_ID`
-     - `SENDER_EMAIL`
+    - `WEBAUTHN_RP_ID`
+    - `CENSUS_3FA_VALIDITY_WINDOW_MINUTES`
+    - `SENDER_EMAIL`
      - `SECURITY_ALERT_EMAIL`
 
 10. **Set Up Environment Variable Loading**
