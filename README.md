@@ -97,7 +97,7 @@ This repository now contains the implementation guide for building the **Wapenma
     - Candidate recipient, optional triggering user, message body, type enum, read flag.
 
 19. **Create Census Team Members Table**
-    - PK/FK to `users`, employee ID, department, 3FA flags/timestamps.
+    - PK/FK to `users`, employee ID, department, three-factor authentication (3FA) flags/timestamps.
 
 20. **Create Census Audit Log Table**
     - Immutable record of ward population updates.
@@ -202,7 +202,10 @@ This repository now contains the implementation guide for building the **Wapenma
     - Verify assertion; issue full JWT; update 3FA login timestamp.
 
 50. **Implement Population Update Endpoint**
-    - Require census role + valid recent 3FA (within configured window, e.g., one hour via `CENSUS_3FA_VALIDITY_WINDOW_MINUTES`), audit log, update population, trigger recalculation/notifications.
+    - Require census role authorization.
+    - Require valid recent 3FA within the configured window (for example via `CENSUS_3FA_VALIDITY_WINDOW_MINUTES`).
+    - Write an audit log entry for each successful update.
+    - Update ward population value and trigger recalculation/notifications.
 
 51. **Implement Recalculation + Notification Trigger**
     - Recompute impacted candidate metrics and create census update notifications.
